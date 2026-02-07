@@ -1,9 +1,6 @@
 Class {
 	#name : 'MyNodeTest',
 	#superclass : 'TestCase',
-	#instVars : [
-		'value'
-	],
 	#category : 'MyLinkedList',
 	#package : 'MyLinkedList'
 }

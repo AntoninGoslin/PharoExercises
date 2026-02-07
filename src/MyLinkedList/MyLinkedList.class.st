@@ -50,6 +50,11 @@ MyLinkedList >> head [
 ]
 
 { #category : 'accessing' }
+MyLinkedList >> head: aHead [
+	head := aHead 
+]
+
+{ #category : 'accessing' }
 MyLinkedList >> initialize [
     super initialize.
     head := nil.
