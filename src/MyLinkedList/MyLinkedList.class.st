@@ -22,6 +22,24 @@ MyLinkedList >> initialize [
 ]
 
 { #category : 'accessing' }
+MyLinkedList >> insert: anInteger [
+	| newNode |
+	newNode := MyNode new value: anInteger.
+
+	tail
+		"case where tail is nil -> node is the head and the tail "
+		ifNil: [
+					head := newNode.
+					tail := newNode.
+			 	] 
+		"if linked list have more than 1 element, we add the node at tail"
+		ifNotNil: [ 
+						tail next: newNode.
+						tail := newNode 
+			 		]
+]
+
+{ #category : 'accessing' }
 MyLinkedList >> tail [ 
 	^ tail
 ]
