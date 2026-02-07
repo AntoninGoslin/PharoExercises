@@ -1,5 +1,5 @@
 Class {
-	#name : 'MyLink',
+	#name : 'MyNode',
 	#superclass : 'Object',
 	#instVars : [
 		'value',
@@ -10,21 +10,21 @@ Class {
 }
 
 { #category : 'evaluating' }
-MyLink >> next [
+MyNode >> next [
 	^ next 
 ]
 
 { #category : 'evaluating' }
-MyLink >> next: aLink [
-	next := aLink
+MyNode >> next: aNode [
+	next := aNode
 ]
 
 { #category : 'evaluating' }
-MyLink >> value [
+MyNode >> value [
 	^ value 
 ]
 
 { #category : 'evaluating' }
-MyLink >> value: aValue [
+MyNode >> value: aValue [
 	value := aValue 
 ]
