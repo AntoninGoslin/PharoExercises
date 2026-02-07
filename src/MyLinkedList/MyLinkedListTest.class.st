@@ -19,6 +19,19 @@ MyLinkedListTest >> testDeleteHead [
 ]
 
 { #category : 'running' }
+MyLinkedListTest >> testDeleteTail [
+	| list |
+	list := MyLinkedList new.
+	list insert: 1. 
+	list insert: 2.
+	
+	list delete: 2.
+	
+	self assert: list head value equals: 1.
+	self assert: list head equals: list tail.
+]
+
+{ #category : 'running' }
 MyLinkedListTest >> testInsert2Elements [
 	| list |
 	list := MyLinkedList new.

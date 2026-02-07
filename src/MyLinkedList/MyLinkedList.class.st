@@ -33,7 +33,8 @@ MyLinkedList >> delete: anInteger [
 		current value = anInteger ifTrue: [ 
 			"deleting node"
 			previous next: current next.
-			
+			"fix here, we have to take care if the element is the last"
+			current == tail ifTrue: [ tail := previous ].
 			^ self
 		].
 		"move forward"
