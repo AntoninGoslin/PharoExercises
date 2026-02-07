@@ -6,6 +6,22 @@ Class {
 }
 
 { #category : 'running' }
+MyLinkedListTest >> testDeleteAnywhere [
+	| list |
+	list := MyLinkedList new.
+	list insert: 1. 
+	list insert: 2.
+	list insert: 3.
+	list insert: 4.
+	
+	list delete: 2.
+	list delete: 1. 
+	
+	self assert: list head value equals: 3.
+	self assert: list tail value equals: 4.
+]
+
+{ #category : 'running' }
 MyLinkedListTest >> testDeleteHead [
 	| list |
 	list := MyLinkedList new.
@@ -16,6 +32,18 @@ MyLinkedListTest >> testDeleteHead [
 	
 	self assert: list head value equals: 2.
 	self assert: list head equals: list tail.
+]
+
+{ #category : 'running' }
+MyLinkedListTest >> testDeleteInAListWith1Element [
+	| list |
+	list := MyLinkedList new.
+	list insert: 1. 
+
+	list delete: 1. 
+	
+	self assert: list head isNil .
+	self assert: list tail isNil .
 ]
 
 { #category : 'running' }
