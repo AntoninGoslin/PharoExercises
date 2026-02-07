@@ -78,7 +78,16 @@ MyLinkedList >> insert: anInteger [
 MyLinkedList >> search: anInteger [
 	| current |
 	current := head.
-
+	
+	"[ current isNil ] ifTrue: [^ nil]."
+	
+	[ current isNotNil ] whileTrue: [ 
+												"found"
+												current value = anInteger ifTrue: [ ^ current ].
+												current := current next
+											 ].
+	"not found"
+	^nil.
 ]
 
 { #category : 'accessing' }
