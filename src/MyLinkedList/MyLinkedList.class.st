@@ -10,6 +10,41 @@ Class {
 }
 
 { #category : 'accessing' }
+MyLinkedList >> delete: anInteger [
+	| current previous |
+	
+	"empty list"
+	head ifNil: [^ self].
+	
+	"we delete the first element"
+	head value = anInteger ifTrue: [
+						 						head := head next.
+												"case for 1 element list"
+												head ifNil: [ tail := nil ].
+												^ self
+											 ].
+	"we delete a element in the list"
+	previous := head.
+	current := head next.
+	
+	"if not empty"
+	[ current isNotNil ] whileTrue: [ 
+		"in pharo, the java == is = "
+		current value = anInteger ifTrue: [ 
+			"deleting node"
+			previous next: current next.
+			
+			^ self
+		].
+		"move forward"
+		previous := current.
+		current := current next.
+	].
+	
+	
+]
+
+{ #category : 'accessing' }
 MyLinkedList >> head [ 
 	^ head 
 ]
@@ -37,6 +72,13 @@ MyLinkedList >> insert: anInteger [
 						tail next: newNode.
 						tail := newNode 
 			 		]
+]
+
+{ #category : 'accessing' }
+MyLinkedList >> search: anInteger [
+	| current |
+	current := head.
+
 ]
 
 { #category : 'accessing' }
