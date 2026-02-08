@@ -21,6 +21,7 @@ JavaDocGenerator >> for: aClass [
 
 "JavaDocGenerator new for: MyLinkedList in the playground to see the result"
 "FileLocator workingDirectory to see the working directory"
+"use JavaDocGenerator new for: Array to the playground to test"
 ]
 
 { #category : 'writing' }
