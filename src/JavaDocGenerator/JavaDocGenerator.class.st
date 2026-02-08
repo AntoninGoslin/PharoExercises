@@ -11,7 +11,8 @@ JavaDocGenerator >> for: aClass [
 	file := (aClass name,'.html') asFileReference.
 	
 	file writeStreamDo: [ :stream |
-								self writeHTMLHeaderOn: stream for: aClass 
+								self writeHTMLHeaderOn: stream for: aClass. 
+								self writeHTMLDescriptionOn: stream for: aClass
 							 ].
 	"open the file directly in the web browser"
 	WebBrowser openOn: file asUrl.
@@ -23,19 +24,23 @@ JavaDocGenerator >> for: aClass [
 ]
 
 { #category : 'writing' }
-JavaDocGenerator >> writeHTMLHeaderOn: aStream for: aClass [
-	"using cascade to solve the warning"
-	"we are only using aStream one time"
+JavaDocGenerator >> writeHTMLDescriptionOn: aStream for: aClass [
+	"used to write the description of the class"
 	aStream 
-		nextPutAll: '<!DOCTYPE html>';
-		nextPutAll: '<html>';
-		nextPutAll: '<head>';
-		nextPutAll: '<title> Javadoc of ';
+		nextPutAll: '<h2> Description for the ';
 		nextPutAll: aClass name;
-		nextPutAll: '</title>';
-		nextPutAll: '</head>';
-		nextPutAll: '<body>';
-		nextPutAll: '<h1> Javadoc for class ';
-		nextPutAll: aClass name;
-		nextPutAll: '</h1>'.
+		nextPutAll: ' Class: </h2>';
+		nextPutAll: '<div>';
+		nextPutAll:  aClass comment;
+		nextPutAll: '</div>'.
+]
+
+{ #category : 'writing' }
+JavaDocGenerator >> writeHTMLHeaderOn: aStream for: aClass [
+	"Écrit le commentaire de la classe."
+	aStream 
+		nextPutAll: '<h2>Description</h2>';
+		nextPutAll: '<p>';
+		nextPutAll: (aClass comment ifNil: [ 'No description available.' ]);
+		nextPutAll: '</p>'.
 ]
