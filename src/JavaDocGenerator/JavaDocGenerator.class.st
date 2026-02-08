@@ -37,14 +37,15 @@ JavaDocGenerator >> writeHTMLDescriptionOn: aStream for: aClass [
 		nextPutAll: ' Class: </h2>';
 		nextPutAll: '<div>';
 		nextPutAll:  aClass comment;
-		nextPutAll: '</div>'.
+		nextPutAll: '</div>';
+		nextPutAll: '<hr>'.
 ]
 
 { #category : 'writing' }
 JavaDocGenerator >> writeHTMLFooterOn: aStream [
 	"used to write the method of the class"
 	aStream 
-		nextPutAll: '<p> END OF JAVADOC </p>';
+		nextPutAll: '<h1> END OF JAVADOC </h1>';
 		nextPutAll: '</body';
 		nextPutAll: '</html'.
 ]
@@ -64,7 +65,8 @@ JavaDocGenerator >> writeHTMLHeaderOn: aStream for: aClass [
 		nextPutAll: '<body>';
 		nextPutAll: '<h1> Javadoc for class ';
 		nextPutAll: aClass name;
-		nextPutAll: '</h1>'. 
+		nextPutAll: '</h1>';
+		nextPutAll: '<hr>'.
 ]
 
 { #category : 'writing' }
@@ -89,5 +91,6 @@ JavaDocGenerator >> writeHTMLMethodsOn: aStream for: aClass [
 		self writeHTMLMethod: currentMethod on: aStream 
 	].
 
-	aStream nextPutAll: '</ul>'.
+	aStream nextPutAll: '</ul>';
+	nextPutAll: '<hr>'.
 ]
