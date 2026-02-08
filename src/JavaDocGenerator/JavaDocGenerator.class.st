@@ -16,9 +16,10 @@ JavaDocGenerator >> for: aClass [
 								self writeHTMLHeaderOn: stream for: aClass. 
 								self writeHTMLDescriptionOn: stream for: aClass.
 								self writeHTMLMethodsOn: stream for: aClass.
+								self writeHTMLFooterOn: stream.
 							 ].
 	"open the file directly in the web browser"
-	"WebBrowser openOn: file asUrl."
+	WebBrowser openOn: file asUrl.
 	
 	^file
 
@@ -37,6 +38,15 @@ JavaDocGenerator >> writeHTMLDescriptionOn: aStream for: aClass [
 		nextPutAll: '<div>';
 		nextPutAll:  aClass comment;
 		nextPutAll: '</div>'.
+]
+
+{ #category : 'writing' }
+JavaDocGenerator >> writeHTMLFooterOn: aStream [
+	"used to write the method of the class"
+	aStream 
+		nextPutAll: '<p> END OF JAVADOC </p>';
+		nextPutAll: '</body';
+		nextPutAll: '</html'.
 ]
 
 { #category : 'writing' }
