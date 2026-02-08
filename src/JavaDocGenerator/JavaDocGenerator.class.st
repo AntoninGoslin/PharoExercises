@@ -9,6 +9,8 @@ Class {
 JavaDocGenerator >> for: aClass [
 	| file |
 	file := (aClass name,'.html') asFileReference.
+	"delete the previous version of the file"
+	file ensureDelete.
 	
 	file writeStreamDo: [ :stream |
 								self writeHTMLHeaderOn: stream for: aClass. 
@@ -38,10 +40,18 @@ JavaDocGenerator >> writeHTMLDescriptionOn: aStream for: aClass [
 
 { #category : 'writing' }
 JavaDocGenerator >> writeHTMLHeaderOn: aStream for: aClass [
-	"Écrit le commentaire de la classe."
+	"using cascade to solve the warning"
+	"we are only using aStream one time"
 	aStream 
-		nextPutAll: '<h2>Description</h2>';
-		nextPutAll: '<p>';
-		nextPutAll: (aClass comment ifNil: [ 'No description available.' ]);
-		nextPutAll: '</p>'.
+		nextPutAll: '<!DOCTYPE html>';
+		nextPutAll: '<html>';
+		nextPutAll: '<head>';
+		nextPutAll: '<title> Javadoc of ';
+		nextPutAll: aClass name;
+		nextPutAll: '</title>';
+		nextPutAll: '</head>';
+		nextPutAll: '<body>';
+		nextPutAll: '<h1> Javadoc for class ';
+		nextPutAll: aClass name;
+		nextPutAll: '</h1>'.
 ]
